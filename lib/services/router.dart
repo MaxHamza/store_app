@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:task7_store_app/pages/category.dart';
 import 'package:task7_store_app/pages/details_page.dart';
 import 'package:task7_store_app/pages/mybag_page.dart';
+import 'package:task7_store_app/pages/specific_cat_screen.dart';
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
@@ -21,6 +22,12 @@ final GoRouter router = GoRouter(
           path: 'details',
           builder: (BuildContext context, GoRouterState state) {
             return const DetailsPage();
+          },
+        ),
+        GoRoute(
+          path: 'specategory',
+          builder: (BuildContext context, GoRouterState state) {
+            return  SpecificCatScreen();
           },
         ),
       ],

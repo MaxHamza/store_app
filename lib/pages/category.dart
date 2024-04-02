@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:task7_store_app/pages/specific_cat_screen.dart';
 
 class Category extends StatefulWidget {
   const Category({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
-  List<List>categories=[['images/fruit.png','Fruits&Vegetables'],['images/meat.jpg','Meat&Fish'],
+  List<List> categories=[['images/fruit.png','Fruits&Vegetables'],['images/meat.jpg','Meat&Fish'],
   ['images/milk.png','Dairy'],['images/snacks.png','Snacks'],['images/beverages.jpg','Beverages'],['images/breakfast.jpg','Breakfast']
   ];
   @override
@@ -41,7 +42,12 @@ class _CategoryState extends State<Category> {
         ),
         itemBuilder: (context, index){
           return GestureDetector(
-              onTap: () {},
+              onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return SpecificCatScreen(category: categories[index][1],categories1: categories[index],);
+              }));
+
+              },
             child:Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
@@ -65,7 +71,7 @@ class _CategoryState extends State<Category> {
                         ),
                       ],
                     ),
-                 Gap(5),
+                const Gap(5),
                  Text('${categories[index][1]}'),
                   ],
                 ),

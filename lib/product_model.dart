@@ -8,14 +8,18 @@ class ProductModel {
 
   ProductModel({required this.description, required this.title,
     required this.image, required this.amount, required this.price, required this.category});
-
-factory ProductModel.json(String category,int index){
-  List<Map<String,dynamic>>product= _product[category];
-  return ProductModel(image: product[index]['image'],category: product[index]['category']
-      ,description: product[index]['description'],
-      title: product[index]['title'],amount: product[index]['amount'],
-      price: product[index]['price']);
-}
+  static data({required String category}) {
+    List<Map<String, dynamic>>product = _product[category];
+    return product;
+  }
+// factory ProductModel.json(String category,int index){
+//
+//   // return ProductModel(image: product[index]['image'],category: product[index]['category']
+//   //     ,description: product[index]['description'],
+//   //     title: product[index]['title'],amount: product[index]['amount'],
+//   //     price: product[index]['price']);
+//   return product;
+// }
 
  static final Map<String, dynamic> _product={
     "Fruits&Vegetables": [
@@ -31,7 +35,7 @@ factory ProductModel.json(String category,int index){
         "category": "Fruits & Vegetables product",
         "description": "A healthy and delicious snack that's high in potassium and fiber.",
         "title": "Bananas",
-        "image": "https://www.shutterstock.com/image-photo/bunch-bananas-isolated-on-white-600nw-99478112.jpg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT98NMc-ypl1GTY6izJbW6uJsQ1OkUkgFGkmCUtoVj_GA&s",
         "amount": "1 kg",
         "price": 200,
       },
@@ -39,7 +43,7 @@ factory ProductModel.json(String category,int index){
         "category": "Fruits & Vegetables product",
         "description": "A refreshing and nutritious fruit that's a good source of vitamin C.",
         "title": "Oranges",
-        "image": "https://www.heddensofwoodtown.co.uk/wp-content/uploads/2020/05/oranges_opt.jpg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREPl0GMy0ImxgzfVnVfm4NhI0BYIxEWqCq73Jje4ie9g&s",
         "amount": "500g",
         "price": 250,
       },
@@ -54,8 +58,8 @@ factory ProductModel.json(String category,int index){
       {
         "category": "Fruits & Vegetables product",
         "description": "A refreshing and hydrating vegetable that's low in calories.",
-        "title": "Cucumbers",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQort1zpYmNaKbDG1_d8_sjR8VCAioHaCVZK-GHWYCmBZn9ZALEmlICG2h30DYWlu0qfz4&usqp=CAU",
+        "title": "strawberry",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0-5IJH5cvYQV7K0tOyIt_DkEga5EhlpGeqmQ60ZaLEg&s",
         "amount": "1 kg",
         "price": 100,
       },
@@ -87,7 +91,7 @@ factory ProductModel.json(String category,int index){
         "category": "Breakfast product",
         "description": "A nutritious and versatile breakfast option that's high in protein.",
         "title": "Eggs",
-        "image": "https://www.licious.in/blog/wp-content/uploads/2022/01/eggs-1-1024x1024.jpg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdvIY7DttQqepkF2mpwh21pit7cI30xdBsfNToZ8exQ&s",
         "amount": "1 dozen",
         "price": 100,
       },
@@ -123,7 +127,7 @@ factory ProductModel.json(String category,int index){
         "category": "Beverages product",
         "description": "A refreshing and nutritious drink that's a good source of vitamin C.",
         "title": "Orange Juice",
-        "image": "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-Tropicana-Orange-Juice-2:product-header-mobile?wid=768&hei=441&dpr=off",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEK4Y9QeRPKfC_7APlceG4uWZKrpC-Zv_fhbN4hTmE5g&s",
         "amount": "1L",
         "price": 150,
       },
@@ -199,7 +203,7 @@ factory ProductModel.json(String category,int index){
         "category": "Snacks product",
         "description": "A light and airy snack that's perfect for watching movies.",
         "title": "Popcorn",
-        "image": "https://www.popcorn.nl/media/catalog/product/cache/bbf9a6de91a3ca3370d4f0d0057f499a/_/1/_1133_jimmy_s_original_salted_bag_lr_website.png",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn_EJHCFQYJD6T8y91sYP_CVlm8JgLi-XmXohinMdaLQ&s",
         "amount": "100g",
         "price": 50,
       },
@@ -208,7 +212,7 @@ factory ProductModel.json(String category,int index){
       {"category": "Dairy product",
         "description": "A nutritious and versatile beverage that's a good source of calcium and protein.",
         "title": "Whole Milk",
-        "image": "https://www.danoneawayfromhome.com/wp-content/uploads/2018/03/ho-up-milk-6-64oz-whole-organic-ca.png",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNCbuvXUqiWuERyYNQvD1Q4SeGr-vcF3vUEn21eZ_uOw&s",
         "amount": "1L",
         "price": 125,
       },
@@ -216,7 +220,7 @@ factory ProductModel.json(String category,int index){
         "category": "Dairy product",
         "description": "A good source of calcium and protein with less fat than whole milk.",
         "title": "Low-Fat Milk",
-        "image": "https://www.aedairy.com/wp-content/uploads/2022/09/LOWFATMILK-GAL-product-detail-hero-2-535px.png",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2oh_D02NtYtWWfyV-h_Z6lMPcnO93ZE2DRIJUY-oMKQ&s",
         "amount": "1L",
         "price": 115,
       },
@@ -248,12 +252,12 @@ factory ProductModel.json(String category,int index){
         "category": "Dairy product",
         "description": "A spread made from roasted peanuts that's a good source of protein and healthy fats.",
         "title": "Peanut Butter",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfRe_kR-aEtrT7dLhEoEY-lS4QyGvFGJsI0n1kLSbiBw&s",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzQeSLAwEsv8sn4pwD598a6hzbJ5FBokX0F8y1zDrvTg&s",
         "amount": "350g",
         "price": 175,
       },
     ],
-    "Meat&fish": [
+    "Meat&Fish": [
       {
         "category": "Meat & Fish product",
         "description": "A versatile and flavorful ground meat that can be used in a variety of dishes.",
@@ -273,13 +277,13 @@ factory ProductModel.json(String category,int index){
       {"category": "Meat & Fish product",
         "description": "A healthy and delicious fish that's high in omega-3 fatty acids.",
         "title": "Salmon",
-        "image": "https://b2609042.smushcdn.com/2609042/wp-content/uploads/2022/01/salmon.png?lossy=1&strip=1&webp=1",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT_Rrn844QAfdse_QgT22khP1g-Tzn7sSbFFIVwuWyAQ&s",
         "amount": "500g",
         "price": 400,},
       {"category": "Meat & Fish product",
         "description": "A versatile and delicious seafood that's easy to cook.",
         "title": "Shrimp",
-        "image": "https://www.fisheries.noaa.gov/s3/styles/original/s3/2022-09/640x427-Shrimp-White-NOAAFisheries.png?itok=k5jAysoc",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX6ZBRj_qXpQXZpEtEVrIcw5tMwyvyW89SA5hUVOAc2w&s",
         "amount": "500g",
         "price": 350,},
       {
