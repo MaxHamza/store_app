@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:task7_store_app/pages/details_page.dart';
 import 'package:task7_store_app/product_model.dart';
+
+import 'mybag_page.dart';
 
 class SpecificCatScreen extends StatefulWidget {
    SpecificCatScreen({Key? key, this.category,this.categories1}) : super(key: key);
  String ?category;
  List?categories1;
   @override
-  _SpecificCatScreenState createState() => _SpecificCatScreenState();
+  State<SpecificCatScreen> createState() => _SpecificCatScreenState();
 }
 
 class _SpecificCatScreenState extends State<SpecificCatScreen> {
+List<Map<String,dynamic>>bag=[];
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>>? data=ProductModel.data(category: widget.category!);
@@ -41,7 +45,11 @@ class _SpecificCatScreenState extends State<SpecificCatScreen> {
           ),
           itemBuilder: (context, index){
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+              return   DetailsPage(data: data[index],dataNoIndex: data);
+                }));
+              },
               child:Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -58,7 +66,9 @@ class _SpecificCatScreenState extends State<SpecificCatScreen> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(60),
                             child: Image.network(
-                                data[index]['image']??const AssetImage('images/snacks.png'),
+                                data[index]['image'],
+                              errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                                  Image.asset('images/Empty.png'),
                               fit: BoxFit.fill,
                               width: MediaQuery.of(context).size.width*0.25,
                               height: 100,
@@ -80,7 +90,12 @@ class _SpecificCatScreenState extends State<SpecificCatScreen> {
                         ],
                       ),
                      const Gap(10),
-                      MaterialButton(onPressed: (){},
+                      MaterialButton(onPressed: (){
+                       bag.add(data[index]);
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                     return    MybagPage(bag: bag,);
+                      }));
+                      },
                         shape:const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(12))
                         ),
@@ -90,7 +105,6 @@ class _SpecificCatScreenState extends State<SpecificCatScreen> {
                         child:const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-
                             Icon(Icons.shopping_bag_outlined,color: Colors.white,),
                             Spacer(),
                             Text('Add To Bag',style: TextStyle(

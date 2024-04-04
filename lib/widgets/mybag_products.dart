@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class MyBagProducts extends StatefulWidget {
-  const MyBagProducts({Key? key}) : super(key: key);
-
+   MyBagProducts({Key? key,this.bag}) : super(key: key);
+List<Map> ?bag=[];
   @override
   State<MyBagProducts> createState() => _MyBagProductsState();
 }
 
 class _MyBagProductsState extends State<MyBagProducts> {
- List<int> listCount=[1,1];
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
+    
+    return widget.bag!=null? SizedBox(
       width: 376,
       height: 340,
       child: ListView.separated(
@@ -26,14 +26,16 @@ class _MyBagProductsState extends State<MyBagProducts> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image(image: AssetImage('images/del3.png'),
+                    Image(image: NetworkImage(widget.bag![index]['image'],),
+                    errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                     Image.asset('images/fruit.png'),
                     height: 121,
                       width: 115,
                     ),
                     Expanded(
                       child: Column(
                         children: [
-                          Text('Nestle Nido Full Cream Milk Powder Instant',
+                          Text(widget.bag![index]['description'],
                             maxLines: 2,
                             style: TextStyle(fontSize:18),
                           ),
@@ -50,7 +52,7 @@ class _MyBagProductsState extends State<MyBagProducts> {
                           ),
                           Row(
                             children: [
-                              Text('৳182',style: TextStyle(
+                              Text('৳${widget.bag![index]['price']}',style: TextStyle(
                                 fontSize: 22,
                                 color: Colors.orange,
                               ),
@@ -66,15 +68,13 @@ class _MyBagProductsState extends State<MyBagProducts> {
                                       borderRadius: BorderRadius.all(Radius.circular(12))
                                     ),
                                     child: TextButton(onPressed: (){
-                                      if (listCount[index] > 1) {
-                                        listCount[index]--;
+                                        widget.bag![index]['amount']--;
                                         setState(() {});
-                                      }
                                     }, child:const Text('-',),
                                     ),
                                   ),
                                   Gap(MediaQuery.of(context).size.width*0.03),
-                                  Text(listCount[index].toString()),
+                                  Text(widget.bag![index]['amount'].toString()),
                                   Gap(MediaQuery.of(context).size.width*0.03),
                                   Container(
                                     height: 35,
@@ -84,7 +84,7 @@ class _MyBagProductsState extends State<MyBagProducts> {
                                         borderRadius: BorderRadius.all(Radius.circular(12))
                                     ),
                                     child: TextButton(onPressed: (){
-                                        listCount[index]++;
+                                        widget.bag![index]['amount']++;
                                         setState(() {});
                                     }, child:const Text('+',),
                                     ),
@@ -107,7 +107,7 @@ class _MyBagProductsState extends State<MyBagProducts> {
             color: Colors.grey,
           );
           },
-          itemCount: 2),
-    );
+          itemCount:widget.bag?.length??0),
+    ):Gap(1);
   }
 }

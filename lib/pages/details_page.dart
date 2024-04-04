@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:task7_store_app/widgets/mybag_products.dart';
 import '../widgets/other_products.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({Key? key}) : super(key: key);
-
+   DetailsPage({Key? key,this.data,this.dataNoIndex}) : super(key: key);
+    dynamic data;
+    dynamic dataNoIndex;
   @override
   State<DetailsPage> createState() => _DetailsPageState();
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,12 +40,15 @@ class _DetailsPageState extends State<DetailsPage> {
             Container(
               height: 308,
               width: 294,
-            decoration: BoxDecoration(
+            decoration:const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(16)),
             ),
               child: Center(
-           child: Image.asset('images/del3.png'),
+           child:Image.network('${widget.data['image']}',
+           errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                  Image.asset('images/Empty.png'),
+           ) ,
               ),
             ),
              const Gap(15),
@@ -52,12 +56,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 Container(
                   height: 66,
                   width: 66,
-                  decoration: BoxDecoration(
+                  decoration:const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: Center(
-                    child: Image.asset('images/del3.png'),
+                    child: Image.network(widget.data['image']),
                   ),
                 ),
               const  Gap(6),
@@ -69,12 +73,12 @@ class _DetailsPageState extends State<DetailsPage> {
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: Center(
-                    child: Image.asset('images/del3.png'),
+                    child: Image.network(widget.data['image']),
                   ),
                 ),
               ],),
             const  Gap(10),
-              Text('Arla DANO Full Cream Milk Powder Instant ',style: TextStyle(fontSize: 18,),
+              Text(widget.data['description'],style: TextStyle(fontSize: 18,),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
@@ -82,23 +86,28 @@ class _DetailsPageState extends State<DetailsPage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.start,
                children: [
-                 Text('1Kg',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                 Text(widget.data['amount'],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                  Spacer(),
-                 Text('৳182',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.lightGreen),),
+                 Text('${widget.data['price']}৳',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.lightGreen),),
                ],
              ),
               Gap(10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Dairy Products',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                  Text(widget.data['category'],style:const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                 ],
               ),
              const Gap(10),
-              Text('Et quidem faciunt, ut summum bonum sit extremum et rationibus conquisitis de voluptate. Sed ut summum bonum sit id,',
-              overflow: TextOverflow.ellipsis,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('${widget.data['title']}',
+                  overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
-              Gap(25),
+            const  Gap(25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -108,12 +117,12 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),),
                 ],
               ),
-              Gap(20),
-              OtherProducts(),
+            const  Gap(20),
+              OtherProducts(data: widget.dataNoIndex,dataIndex: widget.data),
               MaterialButton(onPressed: (){
               return context.go('/mybag');
               },
-                shape: RoundedRectangleBorder(
+                shape:const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12))
                 ),
                 height: 48,

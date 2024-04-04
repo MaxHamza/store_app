@@ -1,14 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:task7_store_app/widgets/date_picker.dart';
 import 'package:task7_store_app/widgets/mybag_products.dart';
 
 import '../widgets/select_time.dart';
 
 class MybagPage extends StatefulWidget {
-  const MybagPage({Key? key}) : super(key: key);
-
+   MybagPage({Key? key,this.bag}) : super(key: key);
+   List<Map>?bag=[];
   @override
   _MybagPageState createState() => _MybagPageState();
 }
@@ -39,7 +39,7 @@ class _MybagPageState extends State<MybagPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Gap(10),
+          const  Gap(10),
             Row(
               children: [
                 Gap(15),
@@ -47,9 +47,11 @@ class _MybagPageState extends State<MybagPage> {
               ],
             ),
           Gap(10),
-            MyBagProducts(),
-            MaterialButton(onPressed: (){},
-              shape: RoundedRectangleBorder(
+         MyBagProducts(bag: widget.bag,),
+            MaterialButton(onPressed: (){
+              context.pop();
+            },
+              shape:const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12))
               ),
               height: 48,
@@ -85,7 +87,7 @@ class _MybagPageState extends State<MybagPage> {
               Text('Delivery Location',style: TextStyle(
                 fontSize: 18
               ),),
-              Spacer(),
+            const  Spacer(),
               TextButton(child:Text('Change',style: TextStyle(
                   color: Colors.green,
                   fontSize: 18

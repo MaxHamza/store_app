@@ -15,13 +15,13 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: 'mybag',
           builder: (BuildContext context, GoRouterState state) {
-            return const MybagPage();
+            return  MybagPage();
           },
         ),
         GoRoute(
           path: 'details',
           builder: (BuildContext context, GoRouterState state) {
-            return const DetailsPage();
+            return  DetailsPage();
           },
         ),
         GoRoute(

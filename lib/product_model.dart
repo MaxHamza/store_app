@@ -81,7 +81,8 @@ class ProductModel {
         "amount": "500g",
         "price": 200,
       },
-      {"category": "Breakfast product",
+      {
+        "category": "Breakfast product",
         "description": "A quick and easy breakfast option that's a good source of vitamins and minerals.",
         "title": "Cereal",
         "image": "https://i5.walmartimages.com/seo/Kellogg-s-Frosted-Flakes-Strawberry-Milkshake-Cold-Breakfast-Cereal-Family-Size-23-oz-Box_22e7db5e-aa41-4238-8cd4-3e2103c1a83c.d9c6d37db24c3627408703ad6eb1aa43.jpeg",
@@ -95,13 +96,15 @@ class ProductModel {
         "amount": "1 dozen",
         "price": 100,
       },
-      {"category": "Breakfast product",
+      {
+        "category": "Breakfast product",
         "description": "A healthy and delicious breakfast option that's a good source of protein and calcium.",
         "title": "Yogurt",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAlsw12_gpOphAkj7G4W0x8xhTeST3UQ2XW7dZw0Bw5A&s",
         "amount": "500g",
         "price": 250,},
-      {"category": "Breakfast product",
+      {
+        "category": "Breakfast product",
         "description": "A refreshing and nutritious breakfast option that's a good source of vitamins and fiber.",
         "title": "Fruits",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfASlwuEzZn7_TjzQkr25YBgqzQum6TTa_6z5cisevdA&s",
