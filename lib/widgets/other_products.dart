@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:task7_store_app/pages/details_page.dart';
@@ -17,6 +18,13 @@ int ?index1;
           shrinkWrap: false,
           physics:const BouncingScrollPhysics(),
           itemBuilder: (context,index){
+            Random random=Random();
+            int ranIndex=random.nextInt(data.length-1);
+            index=ranIndex;
+            while(index==dataIndex['id']){
+              ranIndex=random.nextInt(dataIndex.length-1);
+              index=ranIndex;
+            }
         return  GestureDetector(
           onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -30,9 +38,13 @@ int ?index1;
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image(image: NetworkImage(data[index]['image']),
-                    height: 121,
-                    width: 115,
+                  Expanded(
+                    child: Image(image: NetworkImage(data[index]['image'],),
+                      errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                          Image.asset('images/Empty.png'),
+                      height: 121,
+                      width: 115,
+                    ),
                   ),
             Gap(5),
             Expanded(

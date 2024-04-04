@@ -14,12 +14,12 @@ class _MyBagProductsState extends State<MyBagProducts> {
     
     return widget.bag!=null? SizedBox(
       width: 376,
-      height: 340,
+      height: 200,
       child: ListView.separated(
           shrinkWrap: false,
           physics:const BouncingScrollPhysics(),
           itemBuilder: (context,index){
-            return  Container(width: 376,
+            return   SizedBox(width: 376,
               height: 164,
               child: Center(
                 child: Row(
@@ -27,8 +27,8 @@ class _MyBagProductsState extends State<MyBagProducts> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image(image: NetworkImage(widget.bag![index]['image'],),
-                    errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
-                     Image.asset('images/fruit.png'),
+                      errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                          Image.asset('images/Empty.png'),
                     height: 121,
                       width: 115,
                     ),
@@ -37,7 +37,7 @@ class _MyBagProductsState extends State<MyBagProducts> {
                         children: [
                           Text(widget.bag![index]['description'],
                             maxLines: 2,
-                            style: TextStyle(fontSize:18),
+                            style:const TextStyle(fontSize:18),
                           ),
                           Gap(10),
                           Row(

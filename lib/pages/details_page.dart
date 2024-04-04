@@ -61,19 +61,25 @@ class _DetailsPageState extends State<DetailsPage> {
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: Center(
-                    child: Image.network(widget.data['image']),
+                    child: Image.network(widget.data['image'],
+                      errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                          Image.asset('images/Empty.png'),
+                    ),
                   ),
                 ),
               const  Gap(6),
                 Container(
                   height: 66,
                   width: 66,
-                  decoration: BoxDecoration(
+                  decoration:const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: Center(
-                    child: Image.network(widget.data['image']),
+                    child: Image.network(widget.data['image'],
+                      errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                          Image.asset('images/Empty.png'),
+                    ),
                   ),
                 ),
               ],),
@@ -86,9 +92,9 @@ class _DetailsPageState extends State<DetailsPage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.start,
                children: [
-                 Text(widget.data['amount'],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                 Text(widget.data['amount'],style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                  Spacer(),
-                 Text('${widget.data['price']}৳',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.lightGreen),),
+                 Text('${widget.data['price']}৳',style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.lightGreen),),
                ],
              ),
               Gap(10),

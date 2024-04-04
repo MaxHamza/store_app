@@ -24,6 +24,7 @@ class ProductModel {
  static final Map<String, dynamic> _product={
     "Fruits&Vegetables": [
       {
+        "id":0,
         "category": "Fruits&Vegetables product",
         "description": "Fresh Organic Apples",
         "title": "Red Apples",
@@ -32,6 +33,7 @@ class ProductModel {
         "price": 500
       },
       {
+        "id":1,
         "category": "Fruits & Vegetables product",
         "description": "A healthy and delicious snack that's high in potassium and fiber.",
         "title": "Bananas",
@@ -40,6 +42,7 @@ class ProductModel {
         "price": 200,
       },
       {
+        "id":2,
         "category": "Fruits & Vegetables product",
         "description": "A refreshing and nutritious fruit that's a good source of vitamin C.",
         "title": "Oranges",
@@ -48,6 +51,7 @@ class ProductModel {
         "price": 250,
       },
       {
+        "id":3,
         "category": "Fruits & Vegetables product",
         "description": "Versatile fruit that can be eaten raw, cooked, or used in sauces.",
         "title": "Tomatoes",
@@ -56,6 +60,7 @@ class ProductModel {
         "price": 150,
       },
       {
+        "id":4,
         "category": "Fruits & Vegetables product",
         "description": "A refreshing and hydrating vegetable that's low in calories.",
         "title": "strawberry",
@@ -64,6 +69,7 @@ class ProductModel {
         "price": 100,
       },
       {
+        "id":5,
         "category": "Fruits & Vegetables product",
         "description": "A refreshing and hydrating vegetable that's low in calories.",
         "title": "Cucumbers",
@@ -74,6 +80,7 @@ class ProductModel {
     ],
     "Breakfast": [
       {
+        "id":0,
         "category": "Breakfast product",
         "description": "A healthy and filling breakfast option that's high in fiber and protein.",
         "title": "Oatmeal",
@@ -82,6 +89,7 @@ class ProductModel {
         "price": 200,
       },
       {
+        "id":1,
         "category": "Breakfast product",
         "description": "A quick and easy breakfast option that's a good source of vitamins and minerals.",
         "title": "Cereal",
@@ -89,6 +97,7 @@ class ProductModel {
         "amount": "350g",
         "price": 150,},
       {
+        "id":2,
         "category": "Breakfast product",
         "description": "A nutritious and versatile breakfast option that's high in protein.",
         "title": "Eggs",
@@ -97,6 +106,7 @@ class ProductModel {
         "price": 100,
       },
       {
+        "id":3,
         "category": "Breakfast product",
         "description": "A healthy and delicious breakfast option that's a good source of protein and calcium.",
         "title": "Yogurt",
@@ -104,6 +114,7 @@ class ProductModel {
         "amount": "500g",
         "price": 250,},
       {
+        "id":4,
         "category": "Breakfast product",
         "description": "A refreshing and nutritious breakfast option that's a good source of vitamins and fiber.",
         "title": "Fruits",
@@ -111,6 +122,7 @@ class ProductModel {
         "amount": "1 kg",
         "price": 300,},
       {
+        "id":5,
         "category": "Breakfast product",
         "description": "A versatile breakfast option that can be eaten plain, with toppings, or used to make sandwiches.",
         "title": "Toast",
@@ -120,13 +132,16 @@ class ProductModel {
       },
     ],
     "Beverages": [
-      {"category": "Beverages product",
+      {
+        "id":0,
+        "category": "Beverages product",
         "description": "The most essential beverage for human health and hydration.",
         "title": "Water",
         "image": "https://thehealthhouse.nl/wp-content/uploads/2022/12/XXL-WATER.png",
         "amount": "1L",
         "price": 50,},
       {
+        "id":1,
         "category": "Beverages product",
         "description": "A refreshing and nutritious drink that's a good source of vitamin C.",
         "title": "Orange Juice",
@@ -134,19 +149,24 @@ class ProductModel {
         "amount": "1L",
         "price": 150,
       },
-      {"category": "Beverages product",
+      {
+        "id":2,
+        "category": "Beverages product",
         "description": "A popular and stimulating beverage that can be enjoyed hot or cold.",
         "title": "Coffee",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3nQWO0C30lUfdkIhqMOvg4bTp38gZL9MieR38XkZ0ig&s",
         "amount": "1 cup",
         "price": 100,},
-      {"category": "Beverages product",
+      {
+        "id":3,
+        "category": "Beverages product",
         "description": "A healthy and relaxing beverage that's available in a variety of flavors.",
         "title": "Tea",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFcfaShS_COkIGCf_KGZD1_oCDRbGHpjovIHC-_-exEw&s",
         "amount": "1 bag",
         "price": 75,},
       {
+        "id":4,
         "category": "Beverages product",
         "description": "A nutritious and versatile beverage that's a good source of calcium and protein.",
         "title": "Milk",
@@ -155,6 +175,7 @@ class ProductModel {
         "price": 125,
       },
       {
+        "id":5,
         "category": "Beverages product",
         "description": "A refreshing and tart beverage that's a good source of vitamin C.",
         "title": "Lemonade",
@@ -164,14 +185,18 @@ class ProductModel {
       },
     ],
     "Snacks": [
-      {"category": "Snacks product",
+      {
+        "id":0,
+        "category": "Snacks product",
         "description": "A classic and salty snack that's perfect for sharing.",
         "title": "Potato Chips",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKRN70GQ6qaKjaF3vQBuJwQV4fa89P16-gYZrYF-vN5g&s",
         "amount": "150g",
         "price": 100,
       },
-      {"category": "Snacks product",
+      {
+        "id":1,
+        "category": "Snacks product",
         "description": "A healthy and nutritious snack that's high in protein and fiber.",
         "title": "Nuts",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSeXFlLbIQI4A3sBWwoXE9hjsP8-a9XrP5SiX85oSnow&s",
@@ -179,6 +204,7 @@ class ProductModel {
         "price": 200,
       },
       {
+        "id":2,
         "category": "Snacks product",
         "description": "A sweet and chewy snack that's a good source of vitamins and minerals.",
         "title": "Dried Fruits",
@@ -187,6 +213,7 @@ class ProductModel {
         "price": 150,
       },
       {
+        "id":3,
         "category": "Snacks product",
         "description": "A sweet and crunchy snack that's perfect for dipping in milk or coffee.",
         "title": "Cookies",
@@ -195,6 +222,7 @@ class ProductModel {
         "price": 125,
       },
       {
+        "id":4,
         "category": "Snacks product",
         "description": "A sweet and moist snack that's perfect for sharing.",
         "title": "Muffins",
@@ -203,6 +231,7 @@ class ProductModel {
         "price": 75,
       },
       {
+        "id":5,
         "category": "Snacks product",
         "description": "A light and airy snack that's perfect for watching movies.",
         "title": "Popcorn",
@@ -212,7 +241,9 @@ class ProductModel {
       },
     ],
     "Dairy": [
-      {"category": "Dairy product",
+      {
+        "id":0,
+        "category": "Dairy product",
         "description": "A nutritious and versatile beverage that's a good source of calcium and protein.",
         "title": "Whole Milk",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNCbuvXUqiWuERyYNQvD1Q4SeGr-vcF3vUEn21eZ_uOw&s",
@@ -220,6 +251,7 @@ class ProductModel {
         "price": 125,
       },
       {
+        "id":1,
         "category": "Dairy product",
         "description": "A good source of calcium and protein with less fat than whole milk.",
         "title": "Low-Fat Milk",
@@ -228,6 +260,7 @@ class ProductModel {
         "price": 115,
       },
       {
+        "id":2,
         "category": "Dairy product",
         "description": "A plant-based alternative to cow's milk that's a good source of vitamin E.",
         "title": "Almond Milk",
@@ -236,6 +269,7 @@ class ProductModel {
         "price": 150,
       },
       {
+        "id":3,
         "category": "Dairy product",
         "description": "A semi-hard cheese that's popular for its sharp and nutty flavor.",
         "title": "Cheddar Cheese",
@@ -244,6 +278,7 @@ class ProductModel {
         "price": 250,
       },
       {
+        "id":4,
         "category": "Dairy product",
         "description": "A thick and creamy yogurt that's a good source of protein and calcium.",
         "title": "Greek Yogurt",
@@ -252,6 +287,7 @@ class ProductModel {
         "price": 200,
       },
       {
+        "id":5,
         "category": "Dairy product",
         "description": "A spread made from roasted peanuts that's a good source of protein and healthy fats.",
         "title": "Peanut Butter",
@@ -262,6 +298,7 @@ class ProductModel {
     ],
     "Meat&Fish": [
       {
+        "id":0,
         "category": "Meat & Fish product",
         "description": "A versatile and flavorful ground meat that can be used in a variety of dishes.",
         "title": "Ground Beef",
@@ -270,6 +307,7 @@ class ProductModel {
         "price": 300,
       },
       {
+        "id":1,
         "category": "Meat & Fish product",
         "description": "A lean and healthy source of protein that's easy to cook.",
         "title": "Chicken Breasts",
@@ -277,19 +315,24 @@ class ProductModel {
         "amount": "1 kg",
         "price": 250,
       },
-      {"category": "Meat & Fish product",
+      {
+        "id":2,
+        "category": "Meat & Fish product",
         "description": "A healthy and delicious fish that's high in omega-3 fatty acids.",
         "title": "Salmon",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT_Rrn844QAfdse_QgT22khP1g-Tzn7sSbFFIVwuWyAQ&s",
         "amount": "500g",
         "price": 400,},
-      {"category": "Meat & Fish product",
+      {
+        "id":3,
+        "category": "Meat & Fish product",
         "description": "A versatile and delicious seafood that's easy to cook.",
         "title": "Shrimp",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX6ZBRj_qXpQXZpEtEVrIcw5tMwyvyW89SA5hUVOAc2w&s",
         "amount": "500g",
         "price": 350,},
       {
+        "id":4,
         "category": "Meat & Fish product",
         "description": "A flavorful and tender meat that's perfect for slow cooking.",
         "title": "Lamb",
@@ -298,6 +341,7 @@ class ProductModel {
         "price": 325,
       },
       {
+        "id":5,
         "category": "Meat & Fish product",
         "description": "A flavorful and versatile cured meat that's perfect for breakfast or as a snack.",
         "title": "Bacon",

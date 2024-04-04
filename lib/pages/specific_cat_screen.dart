@@ -63,15 +63,17 @@ List<Map<String,dynamic>>bag=[];
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(60),
-                            child: Image.network(
-                                data[index]['image'],
-                              errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
-                                  Image.asset('images/Empty.png'),
-                              fit: BoxFit.fill,
-                              width: MediaQuery.of(context).size.width*0.25,
-                              height: 100,
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(60),
+                              child: Image.network(
+                                  data[index]['image'],
+                                errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
+                                    Image.asset('images/Empty.png'),
+                                fit: BoxFit.fill,
+                                width: MediaQuery.of(context).size.width*0.25,
+                                height: 100,
+                              ),
                             ),
                           ),
                         ],

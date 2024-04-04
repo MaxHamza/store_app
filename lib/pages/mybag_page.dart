@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task7_store_app/widgets/date_picker.dart';
 import 'package:task7_store_app/widgets/mybag_products.dart';
-
 import '../widgets/select_time.dart';
 
 class MybagPage extends StatefulWidget {
@@ -179,9 +178,9 @@ class _MybagPageState extends State<MybagPage> {
               ),
             ),
             ),
-            Gap(25),
+          const  Gap(25),
             MaterialButton(onPressed: (){},
-              shape: RoundedRectangleBorder(
+              shape:const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12))
               ),
               height: 48,
