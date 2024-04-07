@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
+import 'package:task7_store_app/manager/transfer_data_cubit.dart';
+import 'package:task7_store_app/pages/mybag_page.dart';
+import 'package:task7_store_app/pages/specific_cat_screen.dart';
 import '../widgets/other_products.dart';
 
-class DetailsPage extends StatefulWidget {
-   DetailsPage({Key? key,this.data,this.dataNoIndex}) : super(key: key);
-    dynamic data;
-    dynamic dataNoIndex;
-  @override
-  State<DetailsPage> createState() => _DetailsPageState();
-}
-
-class _DetailsPageState extends State<DetailsPage> {
-
+class DetailsPage extends StatelessWidget{
+   DetailsPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    int index1=BlocProvider.of<TransferDataCubit>(context).index!;
+    List<dynamic> data=BlocProvider.of<TransferDataCubit>(context).data!;
     return Scaffold(
       appBar:  AppBar(
         title:const Text('Product Details'),
@@ -45,7 +42,7 @@ class _DetailsPageState extends State<DetailsPage> {
               borderRadius: BorderRadius.all(Radius.circular(16)),
             ),
               child: Center(
-           child:Image.network('${widget.data['image']}',
+           child:Image.network('${data[index1]['image']}',
            errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
                   Image.asset('images/Empty.png'),
            ) ,
@@ -61,7 +58,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: Center(
-                    child: Image.network(widget.data['image'],
+                    child: Image.network(data[index1]['image'],
                       errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
                           Image.asset('images/Empty.png'),
                     ),
@@ -76,7 +73,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: Center(
-                    child: Image.network(widget.data['image'],
+                    child: Image.network(data[index1]['image'],
                       errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
                           Image.asset('images/Empty.png'),
                     ),
@@ -84,7 +81,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 ),
               ],),
             const  Gap(10),
-              Text(widget.data['description'],style: TextStyle(fontSize: 18,),
+              Text(data[index1]['description'],style:const TextStyle(fontSize: 18,),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
@@ -92,29 +89,29 @@ class _DetailsPageState extends State<DetailsPage> {
              Row(
                mainAxisAlignment: MainAxisAlignment.start,
                children: [
-                 Text(widget.data['amount'],style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-                 Spacer(),
-                 Text('${widget.data['price']}৳',style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.lightGreen),),
+                 Text('${data[index1]['amount']}${data[index1]['unit']}',style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                const Spacer(),
+                 Text('${data[index1]['price']}৳',style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.lightGreen),),
                ],
              ),
-              Gap(10),
+            const  Gap(10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(widget.data['category'],style:const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                  Text(data[index1]['category'],style:const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                 ],
               ),
              const Gap(10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('${widget.data['title']}',
+                  Text('${data[index1]['title']}',
                   overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
             const  Gap(25),
-              Row(
+           const   Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text('You can also check this items',style: TextStyle(
@@ -124,9 +121,13 @@ class _DetailsPageState extends State<DetailsPage> {
                 ],
               ),
             const  Gap(20),
-              OtherProducts(data: widget.dataNoIndex,dataIndex: widget.data),
+              OtherProducts(data: data,dataIndex: data[index1]),
               MaterialButton(onPressed: (){
-              return context.go('/mybag');
+                bag.add(data[index1]);
+                BlocProvider.of<TransferDataCubit>(context).pushToBag(bag: bag);
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return  MybagPage();
+                }));
               },
                 shape:const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12))

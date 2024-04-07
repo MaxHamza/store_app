@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:task7_store_app/manager/transfer_data_cubit.dart';
+import 'package:task7_store_app/pages/specific_cat_screen.dart';
 import 'package:task7_store_app/widgets/date_picker.dart';
 import 'package:task7_store_app/widgets/mybag_products.dart';
 import '../widgets/select_time.dart';
 
-class MybagPage extends StatefulWidget {
-   MybagPage({Key? key,this.bag}) : super(key: key);
-   List<Map>?bag=[];
-  @override
-  _MybagPageState createState() => _MybagPageState();
-}
-
-class _MybagPageState extends State<MybagPage> {
-
+class MybagPage extends StatelessWidget {
+   MybagPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    List<Map>?bag=BlocProvider.of<TransferDataCubit>(context).bag;
     return Scaffold(
       appBar: AppBar(
         flexibleSpace:  Container(
@@ -39,16 +36,18 @@ class _MybagPageState extends State<MybagPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
           const  Gap(10),
-            Row(
+          const    Row(
               children: [
                 Gap(15),
                 Text('products',style: TextStyle(fontSize: 18),),
               ],
             ),
-          Gap(10),
-         MyBagProducts(bag: widget.bag,),
+        const  Gap(10),
+         MyBagProducts(bag: bag,),
             MaterialButton(onPressed: (){
-              context.pop();
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+             return SpecificCatScreen();
+            }));
             },
               shape:const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12))
@@ -71,32 +70,32 @@ class _MybagPageState extends State<MybagPage> {
                 ],
               ),
             ),
-            Gap(25),
-            Text('Expected Date & TIme',style: TextStyle(
+           const Gap(25),
+          const  Text('Expected Date & TIme',style: TextStyle(
               fontSize: 18
             ),),
-           Gap(15),
-            DatePicker(),
-           Gap(20),
-            SelectTime(),
-            Gap(20),
+           const Gap(15),
+           const DatePicker(),
+           const   Gap(20),
+           const SelectTime(),
+           const  Gap(20),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text('Delivery Location',style: TextStyle(
+             const Text('Delivery Location',style: TextStyle(
                 fontSize: 18
               ),),
             const  Spacer(),
-              TextButton(child:Text('Change',style: TextStyle(
+              TextButton(child:const Text('Change',style: TextStyle(
                   color: Colors.green,
                   fontSize: 18
               ),
               ) ,onPressed: (){},),
-              
+
             ],
           ),
-            Gap(10),
-           Row(
+         const   Gap(10),
+         const  Row(
              mainAxisAlignment: MainAxisAlignment.start,
              children: [
                Icon(Icons.place_outlined),
@@ -108,9 +107,9 @@ class _MybagPageState extends State<MybagPage> {
                )
              ],
            ),
-            Gap(20),
-           Padding(
-             padding: const EdgeInsets.all(8.0),
+           const Gap(20),
+          const Padding(
+             padding:  EdgeInsets.all(8.0),
              child: Row(
                mainAxisAlignment: MainAxisAlignment.start,
                children: [
@@ -120,8 +119,8 @@ class _MybagPageState extends State<MybagPage> {
                ],
              ),
            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+          const  Padding(
+              padding:  EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -131,8 +130,8 @@ class _MybagPageState extends State<MybagPage> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+          const  Padding(
+              padding:  EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -142,38 +141,38 @@ class _MybagPageState extends State<MybagPage> {
                 ],
               ),
             ),
-            Gap(20),
-            Text('Payment Methode'),
-            Gap(10),
+           const Gap(20),
+          const  Text('Payment Methode'),
+           const Gap(10),
             MaterialButton(onPressed: (){},
             child: Container(
               height: 85,
               width: 365,
-              decoration: BoxDecoration(
+              decoration:const BoxDecoration(
                 color: Color(0xffC5EBAA),
                 borderRadius: BorderRadius.all(Radius.circular(12))
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Gap(5),
+               const   Gap(5),
                 Container(
                   height: 38,
                   width: 38,
-                  decoration: BoxDecoration(
+                  decoration:const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Color(0xff5EC401)
                   ),
-                  child: Icon(Icons.euro_outlined)
+                  child:const Icon(Icons.euro_outlined)
                 ),
-                  Gap(5),
-                  Expanded(child: Text('Tap Here to select your Payment Method',
+                 const Gap(5),
+                 const Expanded(child: Text('Tap Here to select your Payment Method',
                   style: TextStyle(
                     fontSize: 15,
                   ),
                   maxLines: 2,
                   )),
-                  Icon(Icons.arrow_forward_ios_outlined),
+               const   Icon(Icons.arrow_forward_ios_outlined),
                 ],
               ),
             ),
@@ -185,7 +184,7 @@ class _MybagPageState extends State<MybagPage> {
               ),
               height: 48,
               minWidth: 343,
-              color: Color(0xff5EC401),
+              color:const Color(0xff5EC401),
               child:const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -201,7 +200,7 @@ class _MybagPageState extends State<MybagPage> {
                 ],
               ),
             ),
-            Gap(10),
+           const Gap(10),
           ],
         ),
       ),

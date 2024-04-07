@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:task7_store_app/manager/transfer_data_cubit.dart';
 import 'package:task7_store_app/pages/details_page.dart';
 import 'package:task7_store_app/product_model.dart';
-
 import 'mybag_page.dart';
 
-class SpecificCatScreen extends StatefulWidget {
-   SpecificCatScreen({Key? key, this.category,this.categories1}) : super(key: key);
- String ?category;
- List?categories1;
-  @override
-  State<SpecificCatScreen> createState() => _SpecificCatScreenState();
-}
-
-class _SpecificCatScreenState extends State<SpecificCatScreen> {
 List<Map<String,dynamic>>bag=[];
+class SpecificCatScreen extends StatelessWidget {
+   SpecificCatScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>>? data=ProductModel.data(category: widget.category!);
+   // var categoryName=Get.find<SpecificCatController>().category;
+  String category=BlocProvider.of<TransferDataCubit>(context).category!;
+    List<Map<String, dynamic>>? data=ProductModel.data(category:category);
     return Scaffold(
       appBar:  AppBar(
-        title: Text(widget.category!.toString()),
+        title: Text(category),//
         backgroundColor: Colors.transparent,
         elevation: 0,
         flexibleSpace: Container(
@@ -46,8 +42,9 @@ List<Map<String,dynamic>>bag=[];
           itemBuilder: (context, index){
             return GestureDetector(
               onTap: () {
+                BlocProvider.of<TransferDataCubit>(context).pushData(data: data, index: index);
                 Navigator.push(context, MaterialPageRoute(builder: (context){
-              return   DetailsPage(data: data[index],dataNoIndex: data);
+              return   DetailsPage();//data: data[index],dataNoIndex: data
                 }));
               },
               child:Container(
@@ -94,8 +91,9 @@ List<Map<String,dynamic>>bag=[];
                      const Gap(10),
                       MaterialButton(onPressed: (){
                        bag.add(data[index]);
+                       BlocProvider.of<TransferDataCubit>(context).pushToBag(bag: bag);
                       Navigator.push(context, MaterialPageRoute(builder: (context){
-                     return    MybagPage(bag: bag,);
+                     return  MybagPage();
                       }));
                       },
                         shape:const RoundedRectangleBorder(

@@ -1,14 +1,23 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:task7_store_app/manager/transfer_data_cubit.dart';
 import 'package:task7_store_app/pages/details_page.dart';
 
-class OtherProducts extends StatelessWidget {
+
+class OtherProducts extends StatefulWidget {
    OtherProducts({Key? key, this.data,this.dataIndex}) : super(key: key);
 dynamic data;
 dynamic dataIndex;
+
+  @override
+  State<OtherProducts> createState() => _OtherProductsState();
+}
+
+class _OtherProductsState extends State<OtherProducts> {
 int ?index1;
+
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
@@ -19,19 +28,20 @@ int ?index1;
           physics:const BouncingScrollPhysics(),
           itemBuilder: (context,index){
             Random random=Random();
-            int ranIndex=random.nextInt(data.length-1);
+            int ranIndex=random.nextInt(widget.data.length);
             index=ranIndex;
-            while(index==dataIndex['id']){
-              ranIndex=random.nextInt(dataIndex.length-1);
+            while(index==widget.dataIndex['id']){
+              ranIndex=random.nextInt(widget.data.length);
               index=ranIndex;
             }
         return  GestureDetector(
           onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context){
-              return DetailsPage(dataNoIndex: data,data: data[index]);
-           }));
+            BlocProvider.of<TransferDataCubit>(context).pushData(data: widget.data, index: index);
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return DetailsPage();
+            }));
           },
-          child: Container(width: 376,
+          child: SizedBox(width: 376,
           height: 164,
             child: Center(
               child: Row(
@@ -39,14 +49,14 @@ int ?index1;
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Image(image: NetworkImage(data[index]['image'],),
+                    child: Image(image: NetworkImage(widget.data[index]['image'],),
                       errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
                           Image.asset('images/Empty.png'),
                       height: 121,
                       width: 115,
                     ),
                   ),
-            Gap(5),
+          const  Gap(5),
             Expanded(
               child: Column(
                 children: [
@@ -54,7 +64,7 @@ int ?index1;
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Text(data[index]['description'],
+                        child: Text(widget.data[index]['description'],
                           maxLines: 2,
                           style:const TextStyle(fontSize:18),
                         ),
@@ -74,7 +84,7 @@ int ?index1;
                   ),
                   Row(
                     children: [
-                      Text('${data[index]['price']}৳',style:const TextStyle(
+                      Text('${widget.data[index]['price']}৳',style:const TextStyle(
                         fontSize: 22,
                         color: Colors.orange,
                       ),

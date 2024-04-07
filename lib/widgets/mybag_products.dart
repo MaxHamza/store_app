@@ -11,7 +11,6 @@ List<Map> ?bag=[];
 class _MyBagProductsState extends State<MyBagProducts> {
   @override
   Widget build(BuildContext context) {
-    
     return widget.bag!=null? SizedBox(
       width: 376,
       height: 200,
@@ -19,6 +18,9 @@ class _MyBagProductsState extends State<MyBagProducts> {
           shrinkWrap: false,
           physics:const BouncingScrollPhysics(),
           itemBuilder: (context,index){
+            int originalAmount=widget.bag![index]['originalamount'];
+            int newAmount=widget.bag![index]['amount'];
+            int paymentRes=newAmount~/originalAmount;
             return   SizedBox(width: 376,
               height: 164,
               child: Center(
@@ -39,8 +41,8 @@ class _MyBagProductsState extends State<MyBagProducts> {
                             maxLines: 2,
                             style:const TextStyle(fontSize:18),
                           ),
-                          Gap(10),
-                          Row(
+                        const  Gap(10),
+                        const  Row(
                             children: [
                               Text('৳342',style: TextStyle(
                                   color: Colors.grey,
@@ -52,24 +54,31 @@ class _MyBagProductsState extends State<MyBagProducts> {
                           ),
                           Row(
                             children: [
-                              Text('৳${widget.bag![index]['price']}',style: TextStyle(
+                              Text('৳${widget.bag![index]['price']*paymentRes}',style:const TextStyle(
                                 fontSize: 22,
                                 color: Colors.orange,
                               ),
                               ),
-                              Gap(9),
+                            const  Gap(9),
                               Row(
                                 children: [
                                   Container(
                                     height: 35,
                                     width: 35,
-                                    decoration: BoxDecoration(
+                                    decoration:const BoxDecoration(
                                       color: Colors.red,
                                       borderRadius: BorderRadius.all(Radius.circular(12))
                                     ),
                                     child: TextButton(onPressed: (){
+                                      if(widget.bag![index]['amount']>1&&widget.bag![index]['unit']!="g") {
                                         widget.bag![index]['amount']--;
                                         setState(() {});
+                                      }
+                                      else if(widget.bag![index]['unit']=="g"&&widget.bag![index]['amount']>originalAmount){
+                                        widget.bag![index]['amount']-=originalAmount;
+                                        setState(() {});
+                                      }
+                                      else{}
                                     }, child:const Text('-',),
                                     ),
                                   ),
@@ -79,13 +88,19 @@ class _MyBagProductsState extends State<MyBagProducts> {
                                   Container(
                                     height: 35,
                                     width: 35,
-                                    decoration: BoxDecoration(
+                                    decoration:const BoxDecoration(
                                         color: Color(0xff5EC401),
                                         borderRadius: BorderRadius.all(Radius.circular(12))
                                     ),
                                     child: TextButton(onPressed: (){
+                                      if(widget.bag![index]['unit']=="g"){
+                                        widget.bag![index]['amount'] += originalAmount;
+                                         setState(() {});
+                                      }
+                                      else{
                                         widget.bag![index]['amount']++;
-                                        setState(() {});
+                                       setState(() {});
+                                      }
                                     }, child:const Text('+',),
                                     ),
                                   ),
@@ -108,6 +123,6 @@ class _MyBagProductsState extends State<MyBagProducts> {
           );
           },
           itemCount:widget.bag?.length??0),
-    ):Gap(1);
+    ):const Gap(1);
   }
 }
