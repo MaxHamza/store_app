@@ -57,7 +57,7 @@ class _MyBagProductsState extends State<MyBagProducts>{
                   children: [
                     Image(image: NetworkImage(widget.bag![index]['image'],),
                       errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
-                          Image.asset('images/Empty.png'),
+                          Image.asset('assets/images/Empty.png'),
                     height: 121,
                       width: 115,
                     ),

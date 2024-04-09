@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:task7_store_app/manager/transfer_data_cubit.dart';
 import 'package:task7_store_app/pages/details_page.dart';
-import 'package:task7_store_app/product_model.dart';
+import 'package:task7_store_app/models/product_model.dart';
 import 'mybag_page.dart';
 
 List<Map<String,dynamic>>bag=[];

@@ -51,7 +51,7 @@ int ?index1;
                   Expanded(
                     child: Image(image: NetworkImage(widget.data[index]['image'],),
                       errorBuilder:(BuildContext context, Object error, StackTrace? stackTrace) =>
-                          Image.asset('images/Empty.png'),
+                          Image.asset('assets/images/Empty.png'),
                       height: 121,
                       width: 115,
                     ),

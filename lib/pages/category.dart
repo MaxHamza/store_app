@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
-import 'package:get_cli/common/utils/json_serialize/json_ast/error.dart';
-import 'package:task7_store_app/controllers/specific_category_controller.dart';
 import 'package:task7_store_app/manager/transfer_data_cubit.dart';
 import 'package:task7_store_app/pages/specific_cat_screen.dart';
 
 class Category extends StatelessWidget {
    Category({Key? key}) : super(key: key);
 
-   List<List> categories=[['images/fruit.png','Fruits&Vegetables'],['images/meat.jpg','Meat&Fish'],
-     ['images/milk.png','Dairy'],['images/snacks.png','Snacks'],['images/beverages.jpg','Beverages']
-     ,['images/breakfast.jpg','Breakfast']
+   List<List> categories=[['assets/images/fruit.png','Fruits&Vegetables'],['assets/images/meat.jpg','Meat&Fish'],
+     ['assets/images/milk.png','Dairy'],['assets/images/snacks.png','Snacks'],['assets/images/beverages.jpg','Beverages']
+     ,['assets/images/breakfast.jpg','Breakfast']
    ];
-  final SpecificCatController getController=Get.put(SpecificCatController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
