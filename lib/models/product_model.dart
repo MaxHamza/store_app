@@ -5,8 +5,9 @@ class ProductModel {
   final int amount;
   final int price;
   final String category;
+  final int id;
 
-  ProductModel({required this.description, required this.title,
+  ProductModel({required this.id, required this.description, required this.title,
     required this.image, required this.amount, required this.price, required this.category});
   static data({required String category}) {
       List<Map<String, dynamic>>product = _product[category];
@@ -14,7 +15,8 @@ class ProductModel {
   }
 
   factory ProductModel.json(List<Map<String,dynamic>>product,int index){
-    return ProductModel(image: product[index]['image'],category: product[index]['category']
+    return ProductModel(image: product[index]['image'],category: product[index]['category'],
+        id:product[index]['id']
         ,description: product[index]['description'],
         title: product[index]['title'],amount: product[index]['amount'],
         price: product[index]['price']);

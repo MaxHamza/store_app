@@ -4,13 +4,14 @@ import 'package:gap/gap.dart';
 import 'package:task7_store_app/manager/transfer_data_cubit.dart';
 import 'package:task7_store_app/pages/specific_cat_screen.dart';
 
+List<List> categories=[['assets/images/fruit.png','Fruits&Vegetables'],['assets/images/meat.jpg','Meat&Fish'],
+  ['assets/images/milk.png','Dairy'],['assets/images/snacks.png','Snacks'],['assets/images/beverages.jpg','Beverages']
+  ,['assets/images/breakfast.jpg','Breakfast']
+];
 class Category extends StatelessWidget {
    Category({Key? key}) : super(key: key);
 
-   List<List> categories=[['assets/images/fruit.png','Fruits&Vegetables'],['assets/images/meat.jpg','Meat&Fish'],
-     ['assets/images/milk.png','Dairy'],['assets/images/snacks.png','Snacks'],['assets/images/beverages.jpg','Beverages']
-     ,['assets/images/breakfast.jpg','Breakfast']
-   ];
+
 
   @override
   Widget build(BuildContext context) {
