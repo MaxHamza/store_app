@@ -93,7 +93,7 @@ class SpecificCatScreen extends StatelessWidget {
                         if(bag.contains(data[index])){
                           ScaffoldMessenger.of(context).showSnackBar(
                           const  SnackBar(
-                              content: Text('you have already added to your bag',style: TextStyle(color: Colors.white),),
+                              content: Text('you have already added to your bag!',style: TextStyle(color: Colors.white),),
                               behavior: SnackBarBehavior.floating,
                               backgroundColor: Colors.orange,
                             ),
