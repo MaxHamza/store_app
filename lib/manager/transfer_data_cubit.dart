@@ -6,6 +6,7 @@ class TransferDataCubit extends Cubit<TransferDataState> {
   String ?category;
   List<Map<String,dynamic>>?data;
   int ?index;
+  int ?totalPayment;
   List<Map>?bag;
   void pushCategory({required String category}){
     this.category= category;
@@ -16,5 +17,9 @@ void pushData({required List<Map<String,dynamic>>data,required int index}){
   }
   void pushToBag({required List<Map>bag}){
     this.bag=bag;
+  }
+  void pushPayment({required int totalPayment}){
+    this.totalPayment=totalPayment;
+    emit(TransferDataSuccess());
   }
 }

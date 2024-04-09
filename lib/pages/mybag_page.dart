@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:task7_store_app/manager/transfer_data_cubit.dart';
 import 'package:task7_store_app/pages/specific_cat_screen.dart';
 import 'package:task7_store_app/widgets/date_picker.dart';
@@ -10,8 +9,11 @@ import '../widgets/select_time.dart';
 
 class MybagPage extends StatelessWidget {
    MybagPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    int subPayment= BlocProvider.of<TransferDataCubit>(context).totalPayment??0;
+   int totalPayment= subPayment+50;
     List<Map>?bag=BlocProvider.of<TransferDataCubit>(context).bag;
     return Scaffold(
       appBar: AppBar(
@@ -29,7 +31,9 @@ class MybagPage extends StatelessWidget {
         ),),
       ),
       backgroundColor: Colors.white,
-    body: Padding(
+    body: BlocBuilder<TransferDataCubit, TransferDataState>(
+  builder: (context, state) {
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
         child: Column(
@@ -108,36 +112,36 @@ class MybagPage extends StatelessWidget {
              ],
            ),
            const Gap(20),
-          const Padding(
+            Padding(
              padding:  EdgeInsets.all(8.0),
              child: Row(
                mainAxisAlignment: MainAxisAlignment.start,
                children: [
                  Text('Subtotal'),
                  Spacer(),
-                 Text('BDT362')
+                 Text('BDT${BlocProvider.of<TransferDataCubit>(context).totalPayment}')
                ],
              ),
            ),
-          const  Padding(
+            Padding(
               padding:  EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text('Delivery Charge'),
                   Spacer(),
-                  Text('BDT50')
+                  Text('BDT50'),
                 ],
               ),
             ),
-          const  Padding(
+            Padding(
               padding:  EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Total'),
-                  Spacer(),
-                  Text('BDT412')
+                  const  Text('Total'),
+                  const   Spacer(),
+                  Text('BDT${(BlocProvider.of<TransferDataCubit>(context).totalPayment??0)+50}')
                 ],
               ),
             ),
@@ -204,7 +208,9 @@ class MybagPage extends StatelessWidget {
           ],
         ),
       ),
-    ),
+    );
+  },
+),
     );
   }
 }

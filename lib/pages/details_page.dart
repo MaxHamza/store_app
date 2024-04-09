@@ -123,11 +123,23 @@ class DetailsPage extends StatelessWidget{
             const  Gap(20),
               OtherProducts(data: data,dataIndex: data[index1]),
               MaterialButton(onPressed: (){
-                bag.add(data[index1]);
-                BlocProvider.of<TransferDataCubit>(context).pushToBag(bag: bag);
-                Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return  MybagPage();
-                }));
+                if(bag.contains(data[index1])){
+                 ScaffoldMessenger.of(context).showSnackBar(
+                     SnackBar(content:const Text('you have already added'),backgroundColor: Colors.orange,
+                        action: SnackBarAction(
+                          label: 'back',
+                          textColor: Colors.white,
+                          onPressed: (){},
+                    )));
+                }
+                else {
+                  bag.add(data[index1]);
+                  BlocProvider.of<TransferDataCubit>(context).pushToBag(
+                      bag: bag);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MybagPage();
+                  }));
+                }
               },
                 shape:const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12))

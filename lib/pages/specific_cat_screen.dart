@@ -90,11 +90,24 @@ class SpecificCatScreen extends StatelessWidget {
                       ),
                      const Gap(10),
                       MaterialButton(onPressed: (){
-                       bag.add(data[index]);
-                       BlocProvider.of<TransferDataCubit>(context).pushToBag(bag: bag);
-                      Navigator.push(context, MaterialPageRoute(builder: (context){
-                     return  MybagPage();
-                      }));
+                        if(bag.contains(data[index])){
+                          ScaffoldMessenger.of(context).showSnackBar(
+                          const  SnackBar(
+                              content: Text('you have already added to your bag',style: TextStyle(color: Colors.white),),
+                              behavior: SnackBarBehavior.floating,
+                              backgroundColor: Colors.orange,
+                            ),
+                          );
+                        }
+                       else {
+                          bag.add(data[index]);
+                          BlocProvider.of<TransferDataCubit>(context).pushToBag(
+                              bag: bag);
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) {
+                            return MybagPage();
+                          }));
+                        }
                       },
                         shape:const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(12))
