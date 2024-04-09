@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../../controllers/search_controller.dart';
 import '../../manager/transfer_data_cubit.dart';
 import '../../models/product_model.dart';
 import '../mybag_page.dart';
@@ -10,7 +13,7 @@ import '../specific_cat_screen.dart';
 
 
 class SearchCard extends StatelessWidget {
-  const SearchCard({
+   SearchCard({
     super.key,
     required this.model,
     required this.data,
@@ -19,6 +22,7 @@ class SearchCard extends StatelessWidget {
   final ProductModel model;
   final int index;
 final  List<Map<String, dynamic>> data;
+  final controller = Get.put(SearchPageController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -84,7 +88,7 @@ final  List<Map<String, dynamic>> data;
                   ),
                   GestureDetector(
                         onTap: (){
-                       if(bag.contains(data[index])){
+                       if(bag.contains(data[controller.visibleProducts[index].id])){
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                         content: Text('you have already added to your bag!',style: TextStyle(color: Colors.white),),
@@ -94,7 +98,7 @@ final  List<Map<String, dynamic>> data;
                       );
                      }
                     else {
-                  bag.add(data[index]);
+                  bag.add(data[controller.visibleProducts[index].id]);
                   BlocProvider.of<TransferDataCubit>(context).pushToBag(
                   bag: bag);
                  Navigator.push(

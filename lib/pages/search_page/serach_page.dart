@@ -33,9 +33,9 @@ class SearchPage extends StatelessWidget {
                           return GestureDetector(
                             onTap: (){
                               List<Map<String, dynamic>>? data=ProductModel.data
-                                (category:controller.visibleProducts[controller.visibleProducts[index].id].category);
+                                (category:controller.visibleProducts[index].category);
                               BlocProvider.of<TransferDataCubit>(context).pushData(data:
-                              data!, index: index);
+                              data!, index: controller.visibleProducts[index].id);
                               Navigator.push(context, MaterialPageRoute(builder: (context){
                                 return   DetailsPage();//data: data[index],dataNoIndex: data
                               }));
