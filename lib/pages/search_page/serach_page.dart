@@ -28,7 +28,7 @@ class SearchPage extends StatelessWidget {
                 ? Expanded(
                     child: ListView.builder(
                       physics:const BouncingScrollPhysics(),
-                        itemCount: controller.visibleProducts.length<=6?controller.visibleProducts.length:6,
+                        itemCount: controller.visibleProducts.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: (){
