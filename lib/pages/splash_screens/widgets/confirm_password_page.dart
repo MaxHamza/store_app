@@ -87,9 +87,9 @@ class ConfirmPasswordPage extends StatelessWidget {
                     ),
                     const Expanded(child: SizedBox()),
                      CustomSplashButton(text: 'Finish, Good to go',ontap:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context){
                       return HomePage();
-                    }));
+                    }),(route) =>false,);
                     },),
                     const SizedBox(height: 20,)
                     ],

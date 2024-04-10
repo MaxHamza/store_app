@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:task7_store_app/manager/transfer_data_cubit.dart';
+import 'package:task7_store_app/pages/home_page.dart';
 import 'package:task7_store_app/pages/specific_cat_screen.dart';
 import 'package:task7_store_app/widgets/date_picker.dart';
 import 'package:task7_store_app/widgets/mybag_products.dart';
@@ -50,7 +51,7 @@ class MybagPage extends StatelessWidget {
          MyBagProducts(bag: bag,),
             MaterialButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context){
-             return SpecificCatScreen();
+             return HomePage();
             }));
             },
               shape:const RoundedRectangleBorder(
